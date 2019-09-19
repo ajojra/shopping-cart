@@ -1,0 +1,29 @@
+<table border="1">
+    <tr>
+        <th>Item No</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let item of items">
+
+        <td>{{item.product.id}}</td>
+        <td>{{item.product.name}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.product.price * item.quantity | currency: '$'}}</td>
+        <td align="center">
+            <a (click)="edit(item)">Edit</a>
+        </td>
+        <td align="center">
+            <a (click)="remove(item.product.id)">
+                <img src="assets/svgs/delete.svg" alt="Kiwi standing on oval">
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5" align="right">Total</td>
+        <td>{{total}}</td>
+    </tr>
+</table>
