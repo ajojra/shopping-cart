@@ -1,0 +1,33 @@
+/* Reset */
+html, body, div {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  font-family: monospace;
+}
+
+.button {
+    background: gray;
+    color: white;
+    border: 0;
+}
+
+.container {
+    display: flex;
+
+    &__cart {
+        margin: 16px;
+    }
+
+    &__product {
+        margin: 16px;
+    }
+}

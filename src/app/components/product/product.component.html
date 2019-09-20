@@ -1,21 +1,35 @@
-
-<h2>{{editMode? 'EDIT': 'ADD'}}</h2>
-<form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm.value)">
-
-    <div>
-        <label for="name">Name</label>
-        <input id="name" type="text" formControlName="name">
+<form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm.value)" class="product">
+    <h2 class="product__heading">{{editMode? 'UPDATE': 'ADD'}}</h2>
+    <div class="product__row">
+        <label class="product__label" for="name">Name</label>
+        <!--<input class="product__input" id="name" type="text" formControlName="name">-->
+        <select class="product__select" (change)="changeProduct($event)" formControlName="name">
+            <option value="" disabled>Select</option>
+            <option *ngFor="let product of products" [value]="product.name">{{product.name}}</option>
+        </select>
     </div>
 
-    <div>
-        <label for="quantity">Quantity</label>
-        <input id="quantity" type="text" formControlName="quantity">
+    <div class="product__row">
+        <label class="product__label" for="quantity">Quantity</label>
+        <!--<input class="product__input" id="quantity" type="text" formControlName="quantity">-->
+        <select class="product__select" (change)="changeQuantity($event)" formControlName="quantity">
+            <option value="" disabled>Select</option>
+            <option *ngFor="let amount of quantities" [value]="amount">{{amount}}</option>
+        </select>
     </div>
 
-    <div>
-        <label for="price">Price</label>
-        <input id="price" type="text" formControlName="price">
+    <div class="product__row">
+        <label class="product__label" for="price">Price</label>
+        <input disabled class="product__input" id="price" type="text" value="{{productForm.value.price}}">
     </div>
 
-    <button class="button" type="submit">{{editMode ? 'Update': 'Add'}}</button>
+    <div class="product__row">
+        <label class="product__label" for="price">Total</label>
+        <input disabled class="product__input" id="price" type="text" value="{{productForm.value.price * productForm.value.quantity}}">
+    </div>
+
+    <div class="product__row">
+        <button [disabled]="!productForm.valid" class="product__button product__button--primary" type="submit">{{editMode ? 'Update': 'Add'}}</button>
+        <button class="product__button product__button--secondary" type="button">Cancel</button>
+    </div>
 </form>

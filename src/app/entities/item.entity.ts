@@ -1,6 +1,6 @@
-import { Product } from './product.entity';
+// import { Product } from './product.entity';
 
-export class Item {
-    product: Product;
-    quantity: number;
-}
+// export class Item {
+//     product: Product;
+//     quantity: number;
+// }

@@ -1,0 +1,52 @@
+  .product {
+    background-color: whitesmoke;
+    list-style-type: none;
+    padding: 12px;
+    border-radius: 3px;
+    border: solid 1px;
+
+    &__heading {
+        text-align: center;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: flex-end;
+        padding: .5em;
+    }
+
+    &__select {
+        height: 32px;
+    }
+
+    &__label {
+        padding: .5em 1em .5em 0;
+        flex: 1;
+    }
+
+    &__input {
+        flex: 2;
+        padding: .5em;
+    }
+
+    &__button {
+        padding: 8px 32px;
+        font-size: 16px;
+        cursor: pointer;
+
+        &--primary {
+            background-color: blue;
+            color: #fff;
+        }
+
+        &--secondary {
+            margin-left: 16px;
+        }
+
+        &:disabled, &[disabled]{
+            border: 1px solid #999999;
+            background-color: #cccccc;
+            color: #666666;
+        }
+    }
+  }

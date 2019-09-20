@@ -1,60 +1,54 @@
 import { Injectable } from '@angular/core';
-import { Item } from '../entities/item.entity';
+import { Product } from '../entities/product.entity';
 import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  items: Item[] = [
+  products: Product[] = [
     {
       quantity: 10,
-      product: {
-        id: 1,
-        name: 'Milk',
-        price: 4.5
-      }
+      id: 1,
+      name: 'Milk',
+      price: 4.5
     },
     {
       quantity: 15,
-      product: {
-        id: 2,
-        name: 'Eggs',
-        price: 8
-      }
+      id: 2,
+      name: 'Eggs',
+      price: 8
     },
     {
       quantity: 20,
-      product: {
-        id: 3,
-        name: 'Bread',
-        price: 10
-      }
+      id: 3,
+      name: 'Bread',
+      price: 10
     }
   ];
-  private editModeSource = new Subject<Item>();
+  private editModeSource = new Subject<Product>();
   editMode$ = this.editModeSource.asObservable();
   constructor() { }
 
-  get(): Item[] {
-    return this.items;
+  get(): Product[] {
+    return this.products;
   }
 
-  add(item: Item) {
-    this.items.push(item);
+  add(item: Product) {
+    this.products.push(item);
   }
 
   remove(id: number) {
-    this.items = this.items.filter(item => item.product.id !== id);
+    this.products = this.products.filter(item => item.id !== id);
   }
 
-  update(item: Item) {
-    let relatedItem = this.items.find(i => i.product.id === item.product.id);
-    relatedItem = item;
+  update(product: Product) {
+    let relatedProduct = this.products.find(i => i.id === product.id);
+    relatedProduct = product;
   }
 
-  setEditMode(item: Item) {
-    this.editModeSource.next(item);
+  setEditMode(product: Product) {
+    this.editModeSource.next(product);
   }
 
 

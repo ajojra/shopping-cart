@@ -1,0 +1,53 @@
+
+@import "../../../styles/_mixins";
+
+
+.cart {
+    width: 100%;
+    table-layout: fixed;
+    
+    &__row {
+        border-bottom: 1px solid #DDD;
+        @include for-medium-devices {    
+            display: flex; 
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 0.5em 0;
+            border: 1px solid rgba(3,3,3,0.2);
+        }
+    }
+
+    &__head, &__data {
+        text-align: left; 
+        padding: 0.25em;
+        @include for-medium-devices {   
+            flex: 1 1 150px;
+            border: 0.5px solid rgba(3,3,3,0.2); 
+        }
+    }
+
+    &__link {
+        cursor: pointer;
+        display: block;
+        text-align: center;
+
+        &:hover {
+            background-color: papayawhip;
+            text-align: center;
+        }
+    }
+
+    &__total-label {
+        text-align: right;
+        padding-right: 8px;
+        font-size: 24px;
+    }
+
+    &__total-value {
+        font-size: 24px;
+    }
+
+    &__link-img {
+        width: 24px;
+    }
+}

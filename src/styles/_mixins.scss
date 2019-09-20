@@ -1,0 +1,4 @@
+// mixins
+@mixin for-medium-devices {
+  @media screen and (max-width: 800px) { @content; }
+}
