@@ -1,21 +1,35 @@
-
-<h2>{{editMode? 'EDIT': 'ADD'}}</h2>
-<form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm.value)">
-
-    <div>
-        <label for="name">Name</label>
-        <input id="name" type="text" formControlName="name">
+<form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm.value)" class="product">
+    
+    <h2 class="product__heading">{{editMode? 'UPDATE': 'ADD'}}</h2>
+    <div class="product__row">
+        <label class="product__label" for="name">Name</label>
+        <!--TODO: Smaller resolution specific select dropdowns-->
+        <select class="product__select" (change)="changeProduct($event)" formControlName="name">
+            <option value="" disabled>Select</option>
+            <option *ngFor="let product of products" [value]="product.name">{{product.name}}</option>
+        </select>
     </div>
 
-    <div>
-        <label for="quantity">Quantity</label>
-        <input id="quantity" type="text" formControlName="quantity">
+    <div class="product__row">
+        <label class="product__label" for="quantity">Quantity</label>
+        <select class="product__select" (change)="changeQuantity($event)" formControlName="quantity">
+            <option value="" disabled>Select</option>
+            <option *ngFor="let amount of quantities" [value]="amount">{{amount}}</option>
+        </select>
     </div>
 
-    <div>
-        <label for="price">Price</label>
-        <input id="price" type="text" formControlName="price">
+    <div class="product__row">
+        <label class="product__label" for="price">Price</label>
+        <div class="product__val">{{(productForm.value.price || 0) | currency: '$'}}</div>
     </div>
 
-    <button class="button" type="submit">{{editMode ? 'Update': 'Add'}}</button>
+    <div class="product__row">
+        <label class="product__label" for="price">Total</label>
+        <div class="product__val">{{(productForm.value.price * productForm.value.quantity) | currency: '$'}}</div>
+    </div>
+
+    <div class="product__row">
+        <button [disabled]="!productForm.valid" class="btn btn--primary" type="submit">{{editMode ? 'Update': 'Add'}}</button>
+        <button class="btn btn--secondary" type="button" (click)="cancel()">Cancel</button>
+    </div>
 </form>

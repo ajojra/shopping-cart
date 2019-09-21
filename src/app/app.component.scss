@@ -1,0 +1,36 @@
+@import "../styles/_mixins";
+
+
+/* Reset */
+html, body, div {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  font-family: monospace;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: stretch;
+
+    @include for-medium-devices {  
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    &__cart, &__product {
+        margin: 16px;
+    }
+}
