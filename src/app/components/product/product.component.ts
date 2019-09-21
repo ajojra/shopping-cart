@@ -65,5 +65,6 @@ export class ProductComponent implements OnInit {
 
     cancel() {
         this.productForm.reset();
+        this.editMode = false;
     }
 }
