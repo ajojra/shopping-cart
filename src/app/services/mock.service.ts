@@ -1,5 +1,8 @@
 import { Product } from '../entities/product.entity';
-
+/**
+ * Mock data for list of products with name and price.
+ * QUANTITIES to populate select dropdown.
+ */
 export class MockService {
     static PRODUCTS: Product[] = [
         {id: 1, name: 'Bread', price: 2 },

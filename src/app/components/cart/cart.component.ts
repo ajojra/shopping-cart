@@ -21,21 +21,16 @@ export class CartComponent implements OnInit {
     constructor(private cartService: CartService) { }
 
     ngOnInit() {
-        this.products = this.cartService.get();
         this.cartService.cartUpdated$.subscribe(products => {
             this.products = products;
         })
     }
 
-    remove(id: number) {
-        this.cartService.remove(id);
-    }
-
-    add(product: Product) {
-        this.cartService.add(product);
-    }
-
     edit(product: Product) {
         this.cartService.setEditMode(product);
+    }
+
+    remove(id: number) {
+        this.cartService.remove(id);
     }
 }

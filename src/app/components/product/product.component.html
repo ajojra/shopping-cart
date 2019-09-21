@@ -3,6 +3,7 @@
     <h2 class="product__heading">{{editMode? 'UPDATE': 'ADD'}}</h2>
     <div class="product__row">
         <label class="product__label" for="name">Name</label>
+        <!--TODO: Smaller resolution specific select dropdowns-->
         <select class="product__select" (change)="changeProduct($event)" formControlName="name">
             <option value="" disabled>Select</option>
             <option *ngFor="let product of products" [value]="product.name">{{product.name}}</option>
@@ -29,6 +30,6 @@
 
     <div class="product__row">
         <button [disabled]="!productForm.valid" class="btn btn--primary" type="submit">{{editMode ? 'Update': 'Add'}}</button>
-        <button class="btn btn--secondary" type="button">Cancel</button>
+        <button class="btn btn--secondary" type="button" (click)="cancel()">Cancel</button>
     </div>
 </form>

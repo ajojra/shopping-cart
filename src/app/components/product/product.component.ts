@@ -56,9 +56,14 @@ export class ProductComponent implements OnInit {
         if (this.editMode) {
             this.cartService.update(product);
         } else {
-            product.id = this.products.length;
+            // unique number
+            product.id = new Date().valueOf();
             this.cartService.add(product);
         }
+        this.productForm.reset();
+    }
+
+    cancel() {
         this.productForm.reset();
     }
 }
