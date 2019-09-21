@@ -2,7 +2,6 @@
 <table border="1" class="cart">
     
     <tr class="cart__row">
-        <th class="cart__head">No</th>
         <th class="cart__head">Name</th>
         <th class="cart__head">Qty</th>
         <th class="cart__head">Total Price</th>
@@ -11,7 +10,6 @@
     </tr>
 
     <tr class="cart__row" *ngFor="let product of products">
-        <td class="cart__data">{{product.id}}</td>
         <td class="cart__data">{{product.name}}</td>
         <td class="cart__data">{{product.quantity}}</td>
         <td class="cart__data">{{product.price * product.quantity | currency: '$'}}</td>
@@ -28,11 +26,11 @@
     </tr>
 
     <tr class="cart__row" *ngIf="products.length">
-        <td class="cart__total-label" colspan="4">Total</td>
+        <td class="cart__total-label" colspan="3">Total</td>
         <td class="cart__total-value" colspan="2">{{total | currency: '$'}}</td>
     </tr>
     
     <tr class="cart__row" *ngIf="!products.length">
-        <td class="cart__total-label cart__total-label--center" colspan="6">No items in cart</td>
+        <td class="cart__total-label cart__total-label--center" colspan="5">No items in cart</td>
     </tr>
 </table>
