@@ -1,20 +1,20 @@
 <table border="1" class="cart">
     <tr class="cart__row">
-        <th class="cart__head">Item No</th>
+        <th class="cart__head">No</th>
         <th class="cart__head">Name</th>
-        <th class="cart__head">Quantity</th>
+        <th class="cart__head">Qty</th>
         <th class="cart__head">Price</th>
         <th class="cart__head"></th>
         <th class="cart__head"></th>
     </tr>
-    <tr class="cart__row" *ngFor="let product of products">
 
+    <tr class="cart__row" *ngFor="let product of products">
         <td class="cart__data">{{product.id}}</td>
         <td class="cart__data">{{product.name}}</td>
         <td class="cart__data">{{product.quantity}}</td>
         <td class="cart__data">{{product.price * product.quantity | currency: '$'}}</td>
         <td class="cart__data">
-            <a class="cart__link" (click)="edit(product)"  title="Edit">
+            <a class="cart__link" (click)="edit(product)" title="Edit">
                 <img class="cart__link-img" src="assets/svgs/edit.svg" alt="Edit Icon">
             </a>
         </td>
@@ -24,8 +24,13 @@
             </a>
         </td>
     </tr>
-    <tr class="cart__row">
+
+    <tr class="cart__row" *ngIf="products.length">
         <td class="cart__total-label" colspan="4">Total</td>
         <td class="cart__total-value" colspan="2">{{total | currency: '$'}}</td>
+    </tr>
+    
+    <tr class="cart__row" *ngIf="!products.length">
+        <td class="cart__total-label cart__total-label--center" colspan="6">No items in cart</td>
     </tr>
 </table>

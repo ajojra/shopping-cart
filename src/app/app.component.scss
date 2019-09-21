@@ -1,3 +1,6 @@
+@import "../styles/_mixins";
+
+
 /* Reset */
 html, body, div {
   border: 0;
@@ -14,20 +17,20 @@ html, body {
   font-family: monospace;
 }
 
-.button {
-    background: gray;
-    color: white;
-    border: 0;
-}
 
 .container {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: stretch;
 
-    &__cart {
-        margin: 16px;
+    @include for-medium-devices {  
+        flex-direction: column-reverse;
+        align-items: center;
     }
 
-    &__product {
+    &__cart, &__product {
         margin: 16px;
     }
 }

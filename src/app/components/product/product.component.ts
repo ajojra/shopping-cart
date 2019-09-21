@@ -1,4 +1,3 @@
-// import { Item } from '../../entities/item.entity';
 import { Product } from '../../entities/product.entity';
 import { CartService } from '../../services/cart.service';
 import { MockService } from '../../services/mock.service';
@@ -10,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     templateUrl: './product.component.html',
     styleUrls: ['./product.component.scss']
 })
+
 export class ProductComponent implements OnInit {
     editMode: boolean;
     productForm: FormGroup;
@@ -20,7 +20,8 @@ export class ProductComponent implements OnInit {
         this.productForm = this.formBuilder.group({
             name: ['', Validators.required],
             quantity: ['', Validators.required],
-            price: ['', Validators.required]
+            price: ['', Validators.required],
+            id: ''
         });
     }
 
@@ -45,7 +46,7 @@ export class ProductComponent implements OnInit {
     }
 
     changeProduct(e: any) {
-        const value = this.productForm.value ;
+        const value = this.productForm.value;
         const product = this.products.find(product => product.name === e.target.value);
         Object.assign(value, product);
         this.productForm.setValue(value);
@@ -55,6 +56,7 @@ export class ProductComponent implements OnInit {
         if (this.editMode) {
             this.cartService.update(product);
         } else {
+            product.id = this.products.length;
             this.cartService.add(product);
         }
         this.productForm.reset();

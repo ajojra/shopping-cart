@@ -7,17 +7,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProductComponent,
-    CartComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ProductComponent,
+        CartComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
